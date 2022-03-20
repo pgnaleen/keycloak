@@ -51,7 +51,8 @@ public class VerifyEmail implements RequiredActionProvider, RequiredActionFactor
     public void evaluateTriggers(RequiredActionContext context) {
         if (context.getRealm().isVerifyEmail() && !context.getUser().isEmailVerified()) {
             context.getUser().addRequiredAction(UserModel.RequiredAction.VERIFY_EMAIL);
-            logger.debug("User is required to verify email");
+//            logger.debug("User is required to verify email");
+            logger.info("User is required to verify email");
         }
     }
     @Override
@@ -89,7 +90,8 @@ public class VerifyEmail implements RequiredActionProvider, RequiredActionFactor
 
     @Override
     public void processAction(RequiredActionContext context) {
-        logger.debugf("Re-sending email requested for user: %s", context.getUser().getUsername());
+//        logger.debugf("Re-sending email requested for user: %s", context.getUser().getUsername());
+        logger.infof("Re-sending email requested for user: %s", context.getUser().getUsername());
 
         // This will allow user to re-send email again
         context.getAuthenticationSession().removeAuthNote(Constants.VERIFY_EMAIL_KEY);

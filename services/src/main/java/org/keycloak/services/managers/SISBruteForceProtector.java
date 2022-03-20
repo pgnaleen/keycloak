@@ -112,7 +112,7 @@ public class SISBruteForceProtector implements Runnable, BruteForceProtector {
                     return;
                 }
                 logger.infov("user {0} locked permanently due to too many login attempts", user.getUsername());
-//                user.setEnabled(false); // this can't be done as
+//                user.setEnabled(false); // this can't be done as after that user can't log in
 //                user.setEmailVerified(false);
                 user.addRequiredAction(UserModel.RequiredAction.VERIFY_EMAIL);
 //                user.setSingleAttribute(DISABLED_REASON, DISABLED_BY_PERMANENT_LOCKOUT);
